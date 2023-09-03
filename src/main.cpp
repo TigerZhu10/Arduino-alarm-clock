@@ -10,8 +10,5 @@ void setup() {
 void loop() {
  
     LED_on();
-    delay(1000);
-    delay(1000);
-
 
 }

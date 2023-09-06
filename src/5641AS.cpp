@@ -8,8 +8,15 @@ int e = 7;
 int f = 4;
 int g = 10;
 int d1 = 15;//A1 Pin
+int d2 = 16;//A2 pin
+int d3 = 17;//A3 pin
+int d4 = 18;//A4 pin
+
+int pos_control [4] = {d1, d2, d3, d4};
 
 int Segment [7] = {a,b,c,d,e,f,g};
+
+
 
 int number [10][7] = {
    //a  b  c  d  e  f  g
@@ -25,11 +32,48 @@ int number [10][7] = {
     {1, 1, 1, 1, 0, 1, 1},//NUMBER 9
 };
 
-void display(int num){
+void DisplaySingle(int pos, int num){
+    if(pos == 1){
+        pos = d1;
+    }
+
+    if(pos == 2){
+        pos = d2;
+    }
+
+    if(pos == 3){
+        pos = d3;
+    }
+
+    if(pos == 4){
+        pos = d4;
+    }
+    digitalWrite(pos, LOW);
+
     for(int i = 0; i < 7; i++){
         digitalWrite(Segment[i],number[num][i]);
     }
 }
+
+void Led_clear(void){
+    digitalWrite(d1,HIGH);
+    digitalWrite(d2,HIGH);
+    digitalWrite(d3,HIGH);
+    digitalWrite(d4,HIGH);
+
+    digitalWrite(a,HIGH);
+    digitalWrite(b,HIGH);
+    digitalWrite(c,HIGH);
+    digitalWrite(d,HIGH);
+    digitalWrite(e,HIGH);
+    digitalWrite(f,HIGH);
+    digitalWrite(g,HIGH);
+
+} 
+
+
+
+
 
 void LED_Init(void) {
 
@@ -37,45 +81,38 @@ void LED_Init(void) {
         pinMode(Segment[i], OUTPUT);
     }
 
-     pinMode(A1, OUTPUT);             
-     pinMode(A2, OUTPUT);
-     pinMode(A3, OUTPUT);
-     pinMode(A4, OUTPUT);
-
-
-    // void LED_clear();{
-    //     digitalWrite(4,LOW);
-    //     digitalWrite(5,LOW);
-    //     digitalWrite(6,LOW);
-    //     digitalWrite(7,LOW);
-    //     digitalWrite(8,LOW);
-    //     digitalWrite(9,LOW);
-    //     digitalWrite(10,LOW);
-    // }
-
-
-
+    for(int i = 0;i < 4;i++){
+        pinMode(pos_control[i], OUTPUT);
+        digitalWrite(pos_control[i], HIGH);
+    }
 
 }
 
 void LED_on(void){
-    digitalWrite(A1,HIGH);
-    digitalWrite(A2,HIGH);
-    digitalWrite(A3,HIGH);
-    digitalWrite(A4,HIGH);
 
 
-    digitalWrite(A1,LOW);
-    digitalWrite(A2,HIGH);
-    digitalWrite(A3,HIGH);
-    digitalWrite(A4,HIGH);
 
-    // for(int i = 0; i < 10; i++){
-    //     display(i);
-    //     delay(1000);
-    // }
-    display(9);
-    delay(1000);
+
+
+    DisplaySingle(1,1);
+    delay(5);
+
+    Led_clear();
+
+    DisplaySingle(2,6);
+    delay(5);
+    
+    Led_clear();
+
+    DisplaySingle(3,8);
+    delay(5);
+
+    Led_clear();
+
+    DisplaySingle(4,2);
+    delay(5);
+    
+    Led_clear();
          
 
 }

@@ -86,6 +86,10 @@ void LED_Init(void) {
         digitalWrite(pos_control[i], HIGH);
     }
 
+//we use "for"to set up the mode of the pin. First we made a array and a virable letter "i" because there are 7 letters that we have to set. So it should be smaller than 7.
+//We don't have to do i++ yet that's the last step. Just like before pinMode start, put the name of the array in the bracket and ues i to call the name. write OUTPUT in there.
+//Lastly just i++. The second one is the same as the first. 
+
 }
 
 void LED_on(void){

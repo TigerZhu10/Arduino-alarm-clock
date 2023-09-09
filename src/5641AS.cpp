@@ -1,4 +1,5 @@
 #include "5641AS.h"
+#include <TimeLib.h>
 
 int a = 5;
 int b = 6;
@@ -15,7 +16,6 @@ int d4 = 18;//A4 pin
 int pos_control [4] = {d1, d2, d3, d4};
 
 int Segment [7] = {a,b,c,d,e,f,g};
-int pos_array [4] = {d1,d2,d3,d4};
 
 
 
@@ -33,8 +33,15 @@ int number [10][7] = {
     {1, 1, 1, 1, 0, 1, 1},//NUMBER 9
 };
 
+/*
+OBJECTIVE: Display a wanted number at designated location.
+PARAMETER: 
+    pos: displayed location
+    num: display number
+NOTE: void
+*/
 void DisplaySingle(int pos, int num){
-    digitalWrite(pos, LOW);
+    digitalWrite(pos_control[pos-1], LOW);
 
     for(int i = 0; i < 7; i++){
         digitalWrite(Segment[i],number[num][i]);
@@ -78,29 +85,36 @@ void LED_Init(void) {
 
 }
 
+void Display_Realtime(){
+      int sec = second();
+      sec = sec % 10;
+      DisplaySingle(4,sec);
+}
+
+
+
+
+
+
 void LED_on(void){
 
-
-
-
-
     DisplaySingle(1,1);
-    delay(5);
+    //delay(5);
 
     Led_clear();
 
     DisplaySingle(2,6);
-    delay(5);
+    //delay(5);
     
     Led_clear();
 
     DisplaySingle(3,8);
-    delay(5);
+    //delay(5);
 
     Led_clear();
 
     DisplaySingle(4,2);
-    delay(5);
+    //delay(5);
     
     Led_clear();
          

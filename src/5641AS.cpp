@@ -15,6 +15,7 @@ int d4 = 18;//A4 pin
 int pos_control [4] = {d1, d2, d3, d4};
 
 int Segment [7] = {a,b,c,d,e,f,g};
+int pos_array [4] = {d1,d2,d3,d4};
 
 
 
@@ -33,21 +34,6 @@ int number [10][7] = {
 };
 
 void DisplaySingle(int pos, int num){
-    if(pos == 1){
-        pos = d1;
-    }
-
-    if(pos == 2){
-        pos = d2;
-    }
-
-    if(pos == 3){
-        pos = d3;
-    }
-
-    if(pos == 4){
-        pos = d4;
-    }
     digitalWrite(pos, LOW);
 
     for(int i = 0; i < 7; i++){

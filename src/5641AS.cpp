@@ -85,13 +85,19 @@ void LED_Init(void) {
         digitalWrite(pos_control[i], HIGH);
     }
 }
-// int first_num = 0;
-// int second_num = 0;
-// int third_num = 0;
-// int fourth_num = 0;
-// int display_digit [4] = {first_num, second_num, third_num, fourth_num};
+int first_num = 0;//this is the displayed first number
+int second_num = 0;
+int third_num = 0;
+int fourth_num = 0;
+int display_digit [4] = {first_num, second_num, third_num, fourth_num};
 
 void Display_Realtime(){
+
+
+      for(int i = 0; i)
+       
+
+
       int fourth_number = second();
       fourth_number = fourth_number % 10;
       DisplaySingle(3,fourth_number);
@@ -101,7 +107,7 @@ void Display_Realtime(){
       third_number = third_number/10;
       DisplaySingle(2,third_number);
       Led_clear();
-      digitalWrite(pos_control[2], HIGH);
+      digitalWrite(pos_control[2], 0x1);
 
       int second_number = minute();
       second_number = second_number % 10;

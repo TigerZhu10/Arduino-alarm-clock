@@ -41,31 +41,37 @@ PARAMETER:
 NOTE: void
 */
 void DisplaySingle(int pos, int num){
-    digitalWrite(pos_control[pos-1], LOW);
+    digitalWrite(pos_control[pos], LOW);
 
     for(int i = 0; i < 7; i++){
         digitalWrite(Segment[i],number[num][i]);
     }
 }
-
+/*
+OBJECTIVE: Clear all the LED.
+PARMETER: void
+NOTE: Be care the state of the LED It should be not MAKE the LED light up
+*/
 void Led_clear(void){
-    digitalWrite(d1,HIGH);
-    digitalWrite(d2,HIGH);
-    digitalWrite(d3,HIGH);
-    digitalWrite(d4,HIGH);
 
-    digitalWrite(a,HIGH);
-    digitalWrite(b,HIGH);
-    digitalWrite(c,HIGH);
-    digitalWrite(d,HIGH);
-    digitalWrite(e,HIGH);
-    digitalWrite(f,HIGH);
-    digitalWrite(g,HIGH);
+    digitalWrite(a,LOW);
+    digitalWrite(b,LOW);
+    digitalWrite(c,LOW);
+    digitalWrite(d,LOW);
+    digitalWrite(e,LOW);
+    digitalWrite(f,LOW);
+    digitalWrite(g,LOW);
 
 } 
 
 
-
+/*
+OBJECTIVE: setup the LED using for loop
+PARMETER: void
+NOTE: we use "for"to set up the mode of the pin. First we made a array and a virable letter "i" because there are 7 letters that we have to set. So it should be smaller than 7.
+We don't have to do i++ yet that's the last step. Just like before pinMode start, put the name of the array in the bracket and ues i to call the name. write OUTPUT in there.
+Lastly just i++. The second one is the same as the first. 
+*/
 
 
 void LED_Init(void) {
@@ -78,46 +84,36 @@ void LED_Init(void) {
         pinMode(pos_control[i], OUTPUT);
         digitalWrite(pos_control[i], HIGH);
     }
-
-//we use "for"to set up the mode of the pin. First we made a array and a virable letter "i" because there are 7 letters that we have to set. So it should be smaller than 7.
-//We don't have to do i++ yet that's the last step. Just like before pinMode start, put the name of the array in the bracket and ues i to call the name. write OUTPUT in there.
-//Lastly just i++. The second one is the same as the first. 
-
 }
+// int first_num = 0;
+// int second_num = 0;
+// int third_num = 0;
+// int fourth_num = 0;
+// int display_digit [4] = {first_num, second_num, third_num, fourth_num};
 
 void Display_Realtime(){
-      int sec = second();
-      sec = sec % 10;
-      DisplaySingle(4,sec);
-}
+      int fourth_number = second();
+      fourth_number = fourth_number % 10;
+      DisplaySingle(3,fourth_number);
+      Led_clear();
+      digitalWrite(pos_control[3], HIGH);
+      int third_number = second();
+      third_number = third_number/10;
+      DisplaySingle(2,third_number);
+      Led_clear();
+      digitalWrite(pos_control[2], HIGH);
 
-
-
-
-
-
-void LED_on(void){
-
-    DisplaySingle(1,1);
-    //delay(5);
-
-    Led_clear();
-
-    DisplaySingle(2,6);
-    //delay(5);
+      int second_number = minute();
+      second_number = second_number % 10;
+      DisplaySingle(1,second_number);
+      Led_clear(); 
+      digitalWrite(pos_control[1], HIGH);
+      int first_number = minute(); 
+      first_number = first_number/10;
+      DisplaySingle(0,first_number);
+      Led_clear();
+      digitalWrite(pos_control[0], HIGH);
     
-    Led_clear();
-
-    DisplaySingle(3,8);
-    //delay(5);
-
-    Led_clear();
-
-    DisplaySingle(4,2);
-    //delay(5);
-    
-    Led_clear();
-         
 
 }
 

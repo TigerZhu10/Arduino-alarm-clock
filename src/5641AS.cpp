@@ -85,7 +85,8 @@ void LED_Init(void) {
         digitalWrite(pos_control[i], HIGH);
     }
 }
-int first_num = 0;//this is the displayed first number
+//this is a test
+int first_num = 0;
 int second_num = 0;
 int third_num = 0;
 int fourth_num = 0;

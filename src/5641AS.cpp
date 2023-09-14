@@ -88,49 +88,57 @@ void LED_Init(void) {
 /*
 OB
 */
+int digits[4] = {0,0,0,0};
 int first_number = 0;
 int second_number = 0;
 int third_number = 0;
 int fourth_number = 0;
 int display_digit [4] = {first_number, second_number, third_number, fourth_number};
 
+
+void Time_set(){
+    digits[0] = minute() / 10;
+    digits[1] = minute() % 10;
+    digits[2] = second() / 10;
+    digits[3] = second() % 10;
+}
+
 void Display_Realtime(){
 
 
-
-      for(int i = 0; i < 4; i++){
-        int fourth_number = second();
-        int third_number = second();
-        int second_number = minute();
-        int first_number = minute();
-        DisplaySingle(i,display_digit[i]);
-        Led_clear();
-        digitalWrite(pos_control[i],HIGH);
         // int fourth_number = second();
         // int third_number = second();
         // int second_number = minute();
         // int first_number = minute();
+
+
+        Time_set();
+      for(int i = 0; i < 4; i++){
+        
+        DisplaySingle(i,digits[i]);
+        Led_clear();
+        digitalWrite(pos_control[i],HIGH);
       }
        
 
 
-       int fourth_number = second();
-    //   fourth_number = fourth_number % 10;
+     //  int fourth_number = second();
+     //  fourth_number = fourth_number % 10;
     //   DisplaySingle(3,fourth_number);
     //   Led_clear();
     //   digitalWrite(pos_control[3], HIGH);
-       int third_number = second();
+    //   int third_number = second();
     //   third_number = third_number/10;
     //   DisplaySingle(2,third_number);
     //   Led_clear();
     //   digitalWrite(pos_control[2], HIGH);
 
-       int second_number = minute();
+    //   int second_number = minute();
     //   second_number = second_number % 10;
     //   DisplaySingle(1,second_number);
     //   Led_clear(); 
     //   digitalWrite(pos_control[1], HIGH);
-       int first_number = minute(); 
+    //   int first_number = minute(); 
     //   first_number = first_number/10;
     //   DisplaySingle(0,first_number);
     //   Led_clear();

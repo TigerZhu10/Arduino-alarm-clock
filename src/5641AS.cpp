@@ -86,8 +86,18 @@ void LED_Init(void) {
     }
 }
 /*
-OB
+OBJECTIVE: make a function that we can transfer it if we need it
+PARMETER
+
 */
+
+void Time_set(){
+    digits[0] = minute() / 10;
+    digits[1] = minute() % 10;
+    digits[2] = second() / 10;
+    digits[3] = second() % 10;
+}
+
 int digits[4] = {0,0,0,0};
 int first_number = 0;
 int second_number = 0;
@@ -96,12 +106,7 @@ int fourth_number = 0;
 int display_digit [4] = {first_number, second_number, third_number, fourth_number};
 
 
-void Time_set(){
-    digits[0] = minute() / 10;
-    digits[1] = minute() % 10;
-    digits[2] = second() / 10;
-    digits[3] = second() % 10;
-}
+
 
 void Display_Realtime(){
 

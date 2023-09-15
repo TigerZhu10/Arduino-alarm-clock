@@ -87,7 +87,8 @@ void LED_Init(void) {
 }
 /*
 OBJECTIVE: make a function that we can transfer it if we need it
-PARMETER
+PARMETER: void
+NOTE: The minute(); and the second(); is for us to light up the number 1-9. Because we have to call them so we have to write a name for it like digits[0]
 
 */
 
@@ -107,7 +108,11 @@ int display_digit [4] = {first_number, second_number, third_number, fourth_numbe
 
 
 
-
+/*
+OBJECTIVE: Display the real number by the clock form.
+PARMETER: void
+NOTE: void(for now)
+*/
 void Display_Realtime(){
 
 

@@ -18,12 +18,6 @@ int pos_control [4] = {d1, d2, d3, d4};
 int Segment [7] = {a,b,c,d,e,f,g};
 
 int digits[4] = {0,0,0,0};
-int first_number = 0;
-int second_number = 0;
-int third_number = 0;
-int fourth_number = 0;
-int display_digit [4] = {first_number, second_number, third_number, fourth_number};
-
 
 int number [10][7] = {
    //a  b  c  d  e  f  g
@@ -98,7 +92,7 @@ PARMETER: void
 NOTE: The minute(); and the second(); is for us to light up the number 1-9. Because we have to call them so we have to write a name for it like digits[0]
 */
 void Time_set(){
-    digits[0] = minute() / 10;
+    digits[0] = minute() / 10;//this number is calculated for the first LED position
     digits[1] = minute() % 10;
     digits[2] = second() / 10;
     digits[3] = second() % 10;

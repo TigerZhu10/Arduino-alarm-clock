@@ -17,6 +17,7 @@ int pos_control [4] = {d1, d2, d3, d4};
 
 int Segment [7] = {a,b,c,d,e,f,g};
 
+//Time_set();
 int digits[4] = {0,0,0,0};
 
 int number [10][7] = {
@@ -47,6 +48,7 @@ void DisplaySingle(int pos, int num){
         digitalWrite(Segment[i],number[num][i]);
     }
 }
+
 /*
 OBJECTIVE: Clear all the LED.
 PARMETER: void
@@ -72,8 +74,6 @@ NOTE: we use "for"to set up the mode of the pin. First we made a array and a vir
 We don't have to do i++ yet that's the last step. Just like before pinMode start, put the name of the array in the bracket and ues i to call the name. write OUTPUT in there.
 Lastly just i++. The second one is the same as the first. 
 */
-
-
 void LED_Init(void) {
 
     for(int i = 0;i < 7;i++){

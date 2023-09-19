@@ -66,6 +66,11 @@ void Led_clear(void){
 
 } 
 
+void left_LED(){
+    if(digitalRead(2) == HIGH){
+        Serial.println("test");
+    }
+}
 
 /*
 OBJECTIVE: setup the LED using for loop
@@ -76,6 +81,13 @@ Lastly just i++. The second one is the same as the first.
 */
 void LED_Init(void) {
 
+    Serial.begin(9600);
+
+    pinMode(2,INPUT);
+
+    attachInterrupt(0,left_LED,RISING);
+
+
     for(int i = 0;i < 7;i++){
         pinMode(Segment[i], OUTPUT);
     }
@@ -85,6 +97,13 @@ void LED_Init(void) {
         digitalWrite(pos_control[i], HIGH);
     }
 }
+
+
+// void left_LED(){
+//     if(2 == HIGH){
+//         Serial.println("kobe");
+//     }
+// }
 
 /*
 OBJECTIVE: make a function that we can transfer it if we need it

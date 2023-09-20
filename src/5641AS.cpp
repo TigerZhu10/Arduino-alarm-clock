@@ -66,27 +66,16 @@ void Led_clear(void){
 
 } 
 
-void left_LED(){
-    if(digitalRead(2) == HIGH){
-        Serial.println("test");
-    }
-}
+
 
 /*
 OBJECTIVE: setup the LED using for loop
 PARMETER: void
 NOTE: we use "for"to set up the mode of the pin. First we made a array and a virable letter "i" because there are 7 letters that we have to set. So it should be smaller than 7.
 We don't have to do i++ yet that's the last step. Just like before pinMode start, put the name of the array in the bracket and ues i to call the name. write OUTPUT in there.
-Lastly just i++. The second one is the same as the first. 
+Lastly just i++. The second one is the same as the  first. 
 */
 void LED_Init(void) {
-
-    Serial.begin(9600);
-
-    pinMode(2,INPUT);
-
-    attachInterrupt(0,left_LED,RISING);
-
 
     for(int i = 0;i < 7;i++){
         pinMode(Segment[i], OUTPUT);
@@ -98,12 +87,6 @@ void LED_Init(void) {
     }
 }
 
-
-// void left_LED(){
-//     if(2 == HIGH){
-//         Serial.println("kobe");
-//     }
-// }
 
 /*
 OBJECTIVE: make a function that we can transfer it if we need it

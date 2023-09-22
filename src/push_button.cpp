@@ -1,25 +1,31 @@
 #include "push_button.h"
 
 
-bool Button_Flag_1 = true;
+bool Button_Flag_1 = false;
+unsigned long currentMillis = 0;
 
-void left_LED(){
-
-    delay(150);
-
-    if(digitalRead(2) == HIGH && Button_Flag_1==true){
-        Button_Flag_1 = false;
+bool left_LED(){
+     if(digitalRead(2) == LOW && Button_Flag_1==true){
         Serial.println("test");
+        return true;
     }
-    delay(150);
-    Button_Flag_1 =  true;
 
+        return false;
+     
 }
+
+void first_button(){
+    if (millis() - currentMillis) {
+    button1Pressed = true;
+  }
+  currentMillis = millis();
+}
+
 
 
 
 void Button_Init(){
 
     pinMode(2,INPUT);
-    attachInterrupt(0,left_LED,RISING);
+    attachInterrupt(0,first_button,RISING);
 }

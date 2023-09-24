@@ -3,29 +3,27 @@
 
 bool Button_Flag_1 = false;
 unsigned long currentMillis = 0;
+const unsigned long debounce_stoper = 100;
 
-bool left_LED(){
-     if(digitalRead(2) == LOW && Button_Flag_1==true){
-        Serial.println("test");
+bool left_Button_Release(){
+     if(Button_Flag_1 && digitalRead(2) == LOW ){
         return true;
     }
-
-        return false;
+    return false;
      
 }
 
 void first_button(){
-    if (millis() - currentMillis) {
-    button1Pressed = true;
-  }
-  currentMillis = millis();
+    if (millis() - currentMillis > debounce_stoper) {
+        Button_Flag_1 = true;
+    } 
+    currentMillis = millis();
 }
 
 
 
 
 void Button_Init(){
-
     pinMode(2,INPUT);
     attachInterrupt(0,first_button,RISING);
 }

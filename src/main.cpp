@@ -15,6 +15,12 @@ void setup() {
 }
 
 void loop() {
+
+    if(right_Button_Release()){
+        Button_Flag_2 = false;
+        Serial.println("kobe");
+    }
+
     switch (currentState){
     case DISPLAY_STATE:
         Display_Realtime();
@@ -22,11 +28,13 @@ void loop() {
         if(left_Button_Release()){
             Button_Flag_1 = false;
             currentState = TEST_STATE;
+     //   Serial.println("test");
+
         }
         break;
 
     case TEST_STATE:
-        Serial.println("test");
+      Serial.println("test");
 
         if(left_Button_Release()){
             Button_Flag_1 = false;
@@ -36,6 +44,11 @@ void loop() {
 
     default:
         break;
+    }
+
+    if(right_Button_Release()){
+        Button_Flag_2 = false;
+        Serial.println("kobe");
     }
     
 }

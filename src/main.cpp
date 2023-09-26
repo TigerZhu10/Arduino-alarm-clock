@@ -3,10 +3,9 @@
 #include "push_button.h"
 #include <TimeLib.h>
 
-#define DISPLAY_STATE 0
-#define TEST_STATE 1
 
 int currentState = 0;
+int current = 0;
 
 void setup() {
     Serial.begin(9600);
@@ -16,29 +15,25 @@ void setup() {
 
 void loop() {
 
-    if(right_Button_Release()){
-        Button_Flag_2 = false;
-        Serial.println("kobe");
-    }
 
     switch (currentState){
-    case DISPLAY_STATE:
+    case 0:
         Display_Realtime();
 
         if(left_Button_Release()){
             Button_Flag_1 = false;
-            currentState = TEST_STATE;
+            currentState = 1;
      //   Serial.println("test");
 
         }
         break;
 
-    case TEST_STATE:
+    case 1:
       Serial.println("test");
 
         if(left_Button_Release()){
             Button_Flag_1 = false;
-            currentState = DISPLAY_STATE;
+            currentState = 0;
         }
         break;
 
@@ -46,9 +41,61 @@ void loop() {
         break;
     }
 
-    if(right_Button_Release()){
-        Button_Flag_2 = false;
-        Serial.println("kobe");
+
+
+
+
+
+
+
+       switch (current){
+    case 0:
+       // Display_Realtime();
+
+        if(right_Button_Release()){
+            Button_Flag_2 = false;
+            current = 1;
+     //   Serial.println("kobe");
+
+        }
+        break;
+
+    case 1:
+      Serial.println("kobe");
+
+        if(right_Button_Release()){
+            Button_Flag_2 = false;
+            current = 0;
+        }
+        break;
+
+    default:
+        break;
     }
+
+
+
+    }
+
+ 
+
     
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  if(right_Button_Release()){
+//         Button_Flag_2 = false;
+//         Serial.println("kobe");
+//     }

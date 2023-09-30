@@ -21,7 +21,8 @@ void loop() {
         if(left_Button_Release()){
             Button_Flag_1 = false;
             currentState = 1;
-            Serial.println("btn1");
+           // Serial.println("btn1");
+           display_alarm_time();
         }
 
         if(right_Button_Release()){
@@ -58,6 +59,5 @@ void loop() {
     default:
         break;
     }
-
 }
 

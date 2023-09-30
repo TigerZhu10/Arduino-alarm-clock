@@ -120,3 +120,10 @@ void Display_Realtime(){
     
 }
 
+
+void display_alarm_time(){
+    
+    
+
+}
+

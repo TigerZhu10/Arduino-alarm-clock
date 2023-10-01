@@ -122,13 +122,19 @@ void Display_Realtime(){
 
 
 void display_alarm_time(){
+    digitalWrite(d1,LOW);
+    digitalWrite(d2,LOW);
+    digitalWrite(d3,LOW);
+    digitalWrite(d4,LOW);
 
-  digitalWrite(a, HIGH);
-  digitalWrite(b, HIGH);
-  digitalWrite(c, HIGH);
-  digitalWrite(d, HIGH);
-  digitalWrite(e, HIGH);
-  digitalWrite(f, HIGH);
+    digitalWrite(a, HIGH);
+    digitalWrite(b, HIGH);
+    digitalWrite(c, HIGH);
+    digitalWrite(d, HIGH);
+    digitalWrite(e, HIGH);
+    digitalWrite(f, HIGH);
+
+    
     
 
 }

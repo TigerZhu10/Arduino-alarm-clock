@@ -19,6 +19,7 @@ int Segment [7] = {a,b,c,d,e,f,g};
 
 //Time_set();
 int digits[4] = {0,0,0,0};
+int Alarm_digits[4] = {0,0,0,0};
 
 int number [10][7] = {
    //a  b  c  d  e  f  g
@@ -122,18 +123,13 @@ void Display_Realtime(){
 
 
 void display_alarm_time(){
-    digitalWrite(d1,LOW);
-    digitalWrite(d2,LOW);
-    digitalWrite(d3,LOW);
-    digitalWrite(d4,LOW);
 
-    digitalWrite(a, HIGH);
-    digitalWrite(b, HIGH);
-    digitalWrite(c, HIGH);
-    digitalWrite(d, HIGH);
-    digitalWrite(e, HIGH);
-    digitalWrite(f, HIGH);
-
+    for(int i = 0; i < 4; i++){
+        
+        DisplaySingle(i,Alarm_digits[i]);
+        Led_clear(); 
+        digitalWrite(pos_control[i],HIGH);
+      }
     
     
 

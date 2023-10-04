@@ -21,19 +21,19 @@ void loop() {
         if(left_Button_Release()){
             Button_Flag_1 = false;
             currentState = 1;
-        //    Serial.println("btn1");
-           display_alarm_time();
+        }else if(right_Button_Release()){
+            Button_Flag_2 = false;
+            currentState = 0;
         }
 
-        if(right_Button_Release()){
-            Button_Flag_2 = false;
-            currentState = 2;
-            Serial.println("btn2");
-        }
+        // if(right_Button_Release()){
+        //     Button_Flag_2 = false;
+        //     currentState = 2;
+        // }
         break;
 
     case 1:
-
+        display_alarm_time();
         if(left_Button_Release()){
             Button_Flag_1 = false;
             currentState = 0;
@@ -57,6 +57,7 @@ void loop() {
         break;
 
     default:
+
         break;
     }
 }

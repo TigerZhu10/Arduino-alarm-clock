@@ -13,6 +13,9 @@ int d2 = 16;//A2 pin
 int d3 = 17;//A3 pin
 int d4 = 18;//A4 pin
 
+unsigned long past_Millis_flash = 0;
+int currentMillis_flash = millis();
+
 int pos_control [4] = {d1, d2, d3, d4};
 
 int Segment [7] = {a,b,c,d,e,f,g};
@@ -130,7 +133,33 @@ void display_alarm_time(){
         Led_clear(); 
         digitalWrite(pos_control[i],HIGH);
       }
-    
+
+     int currentMillis_flash = millis();
+
+    if (currentMillis_flash - past_Millis_flash >= 500) {
+        past_Millis_flash = currentMillis_flash;
+        digitalWrite(d1,HIGH);
+        digitalWrite(d2,HIGH);
+        digitalWrite(d3,HIGH);
+        digitalWrite(d4,HIGH);
+
+        digitalWrite(a,HIGH);
+        digitalWrite(b,HIGH);
+        digitalWrite(c,HIGH);
+        digitalWrite(d,HIGH);
+        digitalWrite(e,HIGH);
+        digitalWrite(f,HIGH);
+        digitalWrite(g,HIGH);
+
+        
+
+        Serial.println("test");
+        //Led_clear();
+
+
+
+    } 
+
     
 
 }

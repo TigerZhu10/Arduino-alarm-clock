@@ -154,7 +154,7 @@ void display_alarm_time(){
         
 
         Serial.println("test");
-        //Led_clear();
+        Led_clear();
 
 
 

@@ -16,6 +16,9 @@ int d4 = 18;//A4 pin
 unsigned long past_Millis_flash = 0;
 //int currentMillis_flash = millis();
 unsigned int Alarm_counter = 0;
+int currentPosition = 0;
+unsigned int Flash_counter = 0;
+
 
 int pos_control [4] = {d1, d2, d3, d4};
 
@@ -127,7 +130,7 @@ void Display_Realtime(){
 
 
 void display_alarm_time(){
-
+    
 
     unsigned long currentMillis_flash = millis();
 
@@ -149,12 +152,46 @@ void display_alarm_time(){
 
        }
 
-       // Serial.println(Alarm_counter);
+    //  bool displaydigits = ((Alarm_counter % 2) == 0);
+
+    //    for(int i = 0; i < 4; i++){
+    //     if (displaydigits) {
+    //     DisplaySingle(i, Alarm_digits[i]);
+    //     }
+    //     else{
+    //     if( i != currentPosition){
+    //     DisplaySingle(i, Alarm_digits[i]);
+    //   }
+
+
+    // }
+    // Led_clear();
+    // digitalWrite(pos_control[i], HIGH); 
+
+    // }  
          
 
 
 
     } 
+
+        bool displaydigits = ((Alarm_counter % 2) == 0);
+
+       for(int i = 0; i < 4; i++){
+        if (displaydigits) {
+        DisplaySingle(i, Alarm_digits[i]);
+        }
+        else{
+        if( i != currentPosition){
+        DisplaySingle(i, Alarm_digits[i]);
+      }
+
+
+    }
+    Led_clear();
+    digitalWrite(pos_control[i], HIGH); 
+
+    }  
 
     
 

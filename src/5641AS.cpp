@@ -138,7 +138,7 @@ void display_alarm_time(){
          Alarm_counter++;
 
         past_Millis_flash = currentMillis_flash;
-        
+      /*
        if( Alarm_counter%2 == 1){
         Led_clear();
        } 
@@ -150,32 +150,12 @@ void display_alarm_time(){
             digitalWrite(pos_control[i],HIGH);
         }
 
-       }
-
-    //  bool displaydigits = ((Alarm_counter % 2) == 0);
-
-    //    for(int i = 0; i < 4; i++){
-    //     if (displaydigits) {
-    //     DisplaySingle(i, Alarm_digits[i]);
-    //     }
-    //     else{
-    //     if( i != currentPosition){
-    //     DisplaySingle(i, Alarm_digits[i]);
-    //   }
-
-
-    // }
-    // Led_clear();
-    // digitalWrite(pos_control[i], HIGH); 
-
-    // }  
-         
-
-
+       }  
+    */
 
     } 
 
-        bool displaydigits = ((Alarm_counter % 2) == 0);
+    bool displaydigits = ((Alarm_counter % 2) == 0);
 
        for(int i = 0; i < 4; i++){
         if (displaydigits) {

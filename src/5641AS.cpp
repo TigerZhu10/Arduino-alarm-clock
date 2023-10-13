@@ -20,6 +20,7 @@ int currentPosition = 0;
 unsigned int Flash_counter = 0;
 
 
+
 int pos_control [4] = {d1, d2, d3, d4};
 
 int Segment [7] = {a,b,c,d,e,f,g};
@@ -135,24 +136,9 @@ void display_alarm_time(){
     unsigned long currentMillis_flash = millis();
 
     if (currentMillis_flash - past_Millis_flash >= 500) {
-         Alarm_counter++;
-
+        Alarm_counter++ ;
         past_Millis_flash = currentMillis_flash;
-      /*
-       if( Alarm_counter%2 == 1){
-        Led_clear();
-       } 
-       if( Alarm_counter%2 == 0){
-        for(int i = 0; i < 4; i++){ 
-            
-            DisplaySingle(i,Alarm_digits[i]);
-            Led_clear(); 
-            digitalWrite(pos_control[i],HIGH);
-        }
-
-       }  
-    */
-
+        
     } 
 
     bool displaydigits = ((Alarm_counter % 2) == 0);
@@ -169,11 +155,14 @@ void display_alarm_time(){
 
     }
     Led_clear();
-    digitalWrite(pos_control[i], HIGH); 
+    digitalWrite(pos_control[i], HIGH);  
 
     }  
 
+   
+    }
+
     
 
-}
 
+ 

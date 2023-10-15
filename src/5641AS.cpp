@@ -134,9 +134,8 @@ void display_alarm_time(){
     
 
     unsigned long currentMillis_flash = millis();
-
     if (currentMillis_flash - past_Millis_flash >= 500) {
-        Alarm_counter++ ;
+        Alarm_counter++;
         past_Millis_flash = currentMillis_flash;
         
     } 
@@ -162,7 +161,24 @@ void display_alarm_time(){
    
     }
 
-    
+   void Alarmtime_Inc(){
+    Alarm_digits[currentPosition]++;
+    if(Alarm_digits[0] > 9){
+        Alarm_digits[0] = 0;
+    }
+
+    if(Alarm_digits[1] > 9){
+        Alarm_digits[1] = 0;
+    }
+
+    if(Alarm_digits[2] > 9){
+        Alarm_digits[2] = 0;
+    }
+
+    if(Alarm_digits[3] > 9){
+        Alarm_digits[3] = 0;
+    }
+   } 
 
 
  

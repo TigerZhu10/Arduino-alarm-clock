@@ -33,8 +33,14 @@ void loop() {
         break;
     
     case 1: 
-        //if push button is not pressed within 3s
-        //go back to state 0
+        
+        
+        /*
+        OBJECTIVE: if nothing is touching in 3 second than go back to case 0(display real timer) 
+        PARMETER: void
+        NOTE: Use the millis to solve the problem. 
+        */
+
         if (millis() - currentMillis_latency >= 3000) {    
             currentState = 0;
             currentPosition = 0;
@@ -55,6 +61,7 @@ void loop() {
             Button_Flag_1 = false;
         }
         else if(right_Button_Release()){
+            currentMillis_latency = millis();
             Alarmtime_Inc();
             Button_Flag_2 = false;
         }

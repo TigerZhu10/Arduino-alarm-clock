@@ -129,8 +129,12 @@ void Display_Realtime(){
     
 }
 
-
-void display_alarm_time(){
+        /*
+        OBJECTIVE: make the light flashand using current_postion swich spot. 
+        PARMETER: void
+        NOTE: void
+        */
+    void display_alarm_time(){
     
 
     unsigned long currentMillis_flash = millis();
@@ -161,6 +165,11 @@ void display_alarm_time(){
    
     }
 
+        /*
+        OBJECTIVE: add the number from the position the current_position is. 
+        PARMETER: void
+        NOTE: void
+        */
    void Alarmtime_Inc(){
     Alarm_digits[currentPosition]++;
     if(Alarm_digits[0] > 9){
@@ -178,6 +187,8 @@ void display_alarm_time(){
     if(Alarm_digits[3] > 9){
         Alarm_digits[3] = 0;
     }
+    
+    
    } 
 
 

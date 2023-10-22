@@ -14,9 +14,11 @@ int d3 = 17;//A3 pin
 int d4 = 18;//A4 pin
 
 unsigned long past_Millis_flash = 0;
-//int currentMillis_flash = millis();
+unsigned long past_Millis_Realtime = 0;
 unsigned int Alarm_counter = 0;
+unsigned int Realtime_counter = 0;
 int currentPosition = 0;
+int Realtime_Position = 0;
 unsigned int Flash_counter = 0;
 
 
@@ -129,14 +131,58 @@ void Display_Realtime(){
     
 }
 
-        /*
-        OBJECTIVE: make the light flashand using current_postion swich spot. 
-        PARMETER: void
-        NOTE: void
-        */
-    void display_alarm_time(){
-    
+void Flash_Realtime(){
+    unsigned long currentMillis_Realtime = millis();
+    if (currentMillis_Realtime - past_Millis_Realtime >= 500) {
+        Realtime_counter++;
+        past_Millis_Realtime = currentMillis_Realtime;
+        
+    } 
+    bool Realtime_digits = ((Realtime_counter % 2) == 0);
 
+    for(int i = 0; i < 4; i++){
+        if (Realtime_digits) {
+        //DisplaySingle(i, Alarm_digits[i]);
+        Display_Realtime();
+        }
+        else{
+        if( i != Realtime_Position){
+        DisplaySingle(i, Alarm_digits[i]);
+    //     Time_set();
+    //   for(int i = 0; i < 3; i++){
+        
+    //     DisplaySingle(i,digits[i]);
+    //     Led_clear();
+    //     digitalWrite(pos_control[i],HIGH);
+    //   }
+
+      }
+
+
+    }
+    Led_clear();
+    digitalWrite(pos_control[i], HIGH);  
+
+    } 
+    
+      Time_set();
+
+      for(int i = 0; i < 4; i++){
+        
+        DisplaySingle(i,digits[i]);
+        Led_clear();
+        digitalWrite(pos_control[i],HIGH);
+      }
+    
+}
+
+    /*
+    OBJECTIVE: make the light flashand using current_postion swich spot. 
+    PARMETER: void
+    NOTE: void
+    */
+void display_alarm_time(){
+    
     unsigned long currentMillis_flash = millis();
     if (currentMillis_flash - past_Millis_flash >= 500) {
         Alarm_counter++;
@@ -165,18 +211,25 @@ void Display_Realtime(){
    
     }
 
-        /*
-        OBJECTIVE: add the number from the position the current_position is. 
-        PARMETER: void
-        NOTE: void
-        */
-   void Alarmtime_Inc(){
+    /*
+    OBJECTIVE: add the number from the position the current_position is. 
+    PARMETER: void
+    NOTE: void
+    */
+void Alarmtime_Inc(){
+     
     Alarm_digits[currentPosition]++;
-    if(Alarm_digits[0] > 9){
+
+    //if the digits are bigger than 9 than go back to 0.
+    if(Alarm_digits[0] > 1){
         Alarm_digits[0] = 0;
     }
 
     if(Alarm_digits[1] > 9){
+        Alarm_digits[1] = 0;
+    }
+
+    if(Alarm_digits[1] > 2 && Alarm_digits[0] == 1){
         Alarm_digits[1] = 0;
     }
 

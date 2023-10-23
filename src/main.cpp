@@ -52,11 +52,11 @@ void loop() {
             currentMillis_latency = millis();
             Realtime_counter = 1;
             Realtime_Position++;
-            if(Realtime_Position > 3){             
-                Realtime_Position = 0;
-                currentState = 0;
-                Realtime_counter = 0;
-            }
+            // if(Realtime_Position > 3){             
+            //     Realtime_Position = 0;
+            //     currentState = 0;
+            //     Realtime_counter = 0;
+            // }
             Button_Flag_1 = false;
         }
         else if(right_Button_Release()){

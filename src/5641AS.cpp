@@ -140,41 +140,31 @@ void Flash_Realtime(){
     } 
     bool Realtime_digits = ((Realtime_counter % 2) == 0);
 
-    for(int i = 0; i < 4; i++){
-        if (Realtime_digits) {
-        //DisplaySingle(i, Alarm_digits[i]);
+    if (Realtime_digits) {
         Display_Realtime();
-        }
-        else{
+        }else{
+    for(int i = 0; i < 4; i++){
         if( i != Realtime_Position){
-        DisplaySingle(i, Alarm_digits[i]);
-    //     Time_set();
-    //   for(int i = 0; i < 3; i++){
-        
-    //     DisplaySingle(i,digits[i]);
-    //     Led_clear();
-    //     digitalWrite(pos_control[i],HIGH);
-    //   }
+        DisplaySingle(i, digits[i]);
+
+        }
+
+        Led_clear();
+        digitalWrite(pos_control[i], HIGH);
 
       }
 
 
     }
-    Led_clear();
-    digitalWrite(pos_control[i], HIGH);  
-
+      
     } 
     
-      Time_set();
 
-      for(int i = 0; i < 4; i++){
-        
-        DisplaySingle(i,digits[i]);
-        Led_clear();
-        digitalWrite(pos_control[i],HIGH);
-      }
-    
-}
+
+
+
+
+
 
     /*
     OBJECTIVE: make the light flashand using current_postion swich spot. 

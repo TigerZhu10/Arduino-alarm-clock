@@ -1,2 +1,2 @@
 # Arduino-alarm-clock
-This is a Ardiuno-alarm-clock
+This is a Ardiuno-alarm-clock!

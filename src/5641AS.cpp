@@ -21,8 +21,6 @@ int currentPosition = 0;
 int Realtime_Position = 0;
 unsigned int Flash_counter = 0;
 
-
-
 int pos_control [4] = {d1, d2, d3, d4};
 
 int Segment [7] = {a,b,c,d,e,f,g};
@@ -32,7 +30,7 @@ int digits[4] = {0,0,0,0};
 int Alarm_digits[4] = {0,0,0,0};
 
 int number [10][7] = {
-   //a  b  c  d  e  f  g
+    //a  b  c  d  e  f  g
     {1, 1, 1, 1, 1, 1, 0},//NUMBER 0
     {0, 1, 1, 0, 0, 0, 0},//NUMBER 1
     {1, 1, 0, 1, 1, 0, 1},//NUMBER 2
@@ -88,6 +86,8 @@ Lastly just i++. The second one is the same as the  first.
 */
 void LED_Init(void) {
 
+   
+
     for(int i = 0;i < 7;i++){
         pinMode(Segment[i], OUTPUT);
     }
@@ -119,45 +119,41 @@ NOTE: void(for now)
 */
 void Display_Realtime(){
 
+    Time_set();
 
-      Time_set();
-
-      for(int i = 0; i < 4; i++){
-        
+    for(int i = 0; i < 4; i++){    
         DisplaySingle(i,digits[i]);
         Led_clear();
         digitalWrite(pos_control[i],HIGH);
-      }
+    }
     
 }
 
 void Flash_Realtime(){
     unsigned long currentMillis_Realtime = millis();
+
     if (currentMillis_Realtime - past_Millis_Realtime >= 500) {
         Realtime_counter++;
-        past_Millis_Realtime = currentMillis_Realtime;
-        
+        past_Millis_Realtime = currentMillis_Realtime;       
     } 
+    
     bool Realtime_digits = ((Realtime_counter % 2) == 0);
 
     if (Realtime_digits) {
         Display_Realtime();
-        }else{
-    for(int i = 0; i < 4; i++){
-        if( i != Realtime_Position){
-        DisplaySingle(i, digits[i]);
-
-        }
+    }else{  
+        for(int i = 0; i < 4; i++){
+            if( i != Realtime_Position){
+                DisplaySingle(i, digits[i]);
+            }
 
         Led_clear();
         digitalWrite(pos_control[i], HIGH);
-
-      }
-
+        }
 
     }
       
-    } 
+} 
     
 
 
@@ -174,22 +170,22 @@ void Flash_Realtime(){
 void display_alarm_time(){
     
     unsigned long currentMillis_flash = millis();
+
     if (currentMillis_flash - past_Millis_flash >= 500) {
         Alarm_counter++;
-        past_Millis_flash = currentMillis_flash;
-        
+        past_Millis_flash = currentMillis_flash;     
     } 
 
     bool displaydigits = ((Alarm_counter % 2) == 0);
 
-       for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 4; i++){
         if (displaydigits) {
-        DisplaySingle(i, Alarm_digits[i]);
+            DisplaySingle(i, Alarm_digits[i]);
         }
         else{
         if( i != currentPosition){
-        DisplaySingle(i, Alarm_digits[i]);
-      }
+            DisplaySingle(i, Alarm_digits[i]);
+        }
 
 
     }
@@ -199,7 +195,7 @@ void display_alarm_time(){
     }  
 
    
-    }
+}
 
     /*
     OBJECTIVE: add the number from the position the current_position is. 
@@ -232,7 +228,35 @@ void Alarmtime_Inc(){
     }
     
     
-   } 
+}
 
+void Time_change_Inc(){
+
+    int counter_second = second();
+    int counter_minute = minute(); 
+
+    if(currentPosition == 0){
+        counter_minute++;
+    }
+    if(currentPosition == 1){
+        counter_minute++;
+    }
+    if(currentPosition == 2){
+        counter_second++;
+    }
+    if(currentPosition == 3){
+        counter_second++;
+    }
+    
+
+    setTime(0,counter_minute,counter_second,0,0,0);
+
+    //  second() = counter_second;
+
+    //  minute() = counter_minute;
+
+
+
+}
 
  

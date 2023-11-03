@@ -36,6 +36,7 @@ void loop() {
      
       
      Flash_Realtime(); 
+     
             
     /*
     OBJECTIVE: if nothing is touching in 3 second than go back to case 0(display real time) 
@@ -45,7 +46,7 @@ void loop() {
 
         if (millis() - currentMillis_latency >= 3000) {    
             currentState = 0;
-            //currentPosition = 0;
+            //currentPosit ion = 0;
             Realtime_Position = 0;
         }
         
@@ -63,6 +64,7 @@ void loop() {
         else if(right_Button_Release()){
             currentMillis_latency = millis();
             Alarmtime_Inc();
+            Time_change_Inc();
             Button_Flag_2 = false;
         }
 

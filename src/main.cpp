@@ -33,20 +33,17 @@ void loop() {
         break;
     
      case 1:
-     
-      
-     Flash_Realtime(); 
-     
-            
-    /*
-    OBJECTIVE: if nothing is touching in 3 second than go back to case 0(display real time) 
-    PARMETER: void
-    NOTE: Use millis to solve the problem. 
-    */
-
+        
+        Flash_Realtime(); 
+                
+        /*
+        OBJECTIVE: if nothing is touching in 3 second than go back to case 0(display real time) 
+        PARMETER: void
+        NOTE: Use millis to solve the problem. 
+        */
         if (millis() - currentMillis_latency >= 3000) {    
             currentState = 0;
-            //currentPosit ion = 0;
+            //currentPosition = 0;
             Realtime_Position = 0;
         }
         
@@ -54,29 +51,28 @@ void loop() {
             currentMillis_latency = millis();
             Realtime_counter = 1;
             Realtime_Position++;
-            if(Realtime_Position > 3){             
-                Realtime_Position = 0;
-                currentState = 0;
+            if(Realtime_Position > 3){
+                currentState = 2;             
+                Realtime_Position = 0;               
                 Realtime_counter = 0;
             }
             Button_Flag_1 = false;
-        }
-        else if(right_Button_Release()){
-            currentMillis_latency = millis();
-            Alarmtime_Inc();
-            Time_change_Inc();
-            Button_Flag_2 = false;
+        }else if(right_Button_Release()){
+                currentMillis_latency = millis();
+                Time_change_Inc();
+                Button_Flag_2 = false;
         }
 
         break;
 
 
      case 2:
+       
+       // Alarmtime_Inc(); 
+        display_alarm_time();
 
-        display_alarm_time(); 
-
-        if(right_Button_Release()){
-            currentMillis_latency = millis();
+        if(left_Button_Release()){
+            //currentMillis_latency = millis();
             Alarm_counter = 1;
             currentPosition++;
             if(currentPosition > 3){             
@@ -86,10 +82,11 @@ void loop() {
             }
             Button_Flag_2 = false;
             
-        }else if(left_Button_Release()){
-            Button_Flag_1 = false;
-            currentState = 2;
-        } 
+        }
+        // else if(left_Button_Release()){
+        //     Button_Flag_1 = false;
+        //     currentState = 2;
+        // } 
 
         break;
 

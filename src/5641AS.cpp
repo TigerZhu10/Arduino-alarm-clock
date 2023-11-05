@@ -90,7 +90,7 @@ void LED_Init(void) {
 
     for(int i = 0;i < 7;i++){
         pinMode(Segment[i], OUTPUT);
-    }
+    }  
 
     for(int i = 0;i < 4;i++){
         pinMode(pos_control[i], OUTPUT);
@@ -203,7 +203,7 @@ void display_alarm_time(){
     NOTE: void
     */
 void Alarmtime_Inc(){
-     
+         
     Alarm_digits[currentPosition]++;
 
     //if the digits are bigger than 9 than go back to 0.
@@ -235,16 +235,16 @@ void Time_change_Inc(){
     int counter_second = second();
     int counter_minute = minute(); 
 
-    if(currentPosition == 0){
+    if(Realtime_Position == 0){
+        counter_minute = counter_minute + 10 ;
+    }
+    if(Realtime_Position == 1){
         counter_minute++;
     }
-    if(currentPosition == 1){
-        counter_minute++;
+    if(Realtime_Position == 2){
+        counter_second = counter_second + 10;
     }
-    if(currentPosition == 2){
-        counter_second++;
-    }
-    if(currentPosition == 3){
+    if(Realtime_Position == 3){
         counter_second++;
     }
     

@@ -86,11 +86,9 @@ Lastly just i++. The second one is the same as the  first.
 */
 void LED_Init(void) {
 
-   
-
     for(int i = 0;i < 7;i++){
         pinMode(Segment[i], OUTPUT);
-    }  
+    }
 
     for(int i = 0;i < 4;i++){
         pinMode(pos_control[i], OUTPUT);
@@ -203,7 +201,7 @@ void display_alarm_time(){
     NOTE: void
     */
 void Alarmtime_Inc(){
-         
+          
     Alarm_digits[currentPosition]++;
 
     //if the digits are bigger than 9 than go back to 0.

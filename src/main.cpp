@@ -68,7 +68,7 @@ void loop() {
 
      case 2:
        
-       // Alarmtime_Inc(); 
+         
         display_alarm_time();
 
         if(left_Button_Release()){
@@ -80,13 +80,12 @@ void loop() {
                 currentState = 0;
                 Alarm_counter = 0;
             }
-            Button_Flag_2 = false;
-            
-        }
-        // else if(left_Button_Release()){
-        //     Button_Flag_1 = false;
-        //     currentState = 2;
-        // } 
+            Button_Flag_1 = false;         
+        }else if(right_Button_Release()){
+                Alarmtime_Inc();
+                Button_Flag_2 = false;
+                
+        } 
 
         break;
 

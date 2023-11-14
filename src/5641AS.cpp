@@ -103,10 +103,10 @@ PARMETER: void
 NOTE: The minute(); and the second(); is for us to light up the number 1-9. Because we have to call them so we have to write a name for it like digits[0]
 */
 void Time_set(){
-    digits[0] = minute() / 10;//this number is calculated for the first LED position
-    digits[1] = minute() % 10;
-    digits[2] = second() / 10;
-    digits[3] = second() % 10;
+    digits[0] = hour() / 10;//this number is calculated for the first LED position
+    digits[1] = hour() % 10;
+    digits[2] = minute() / 10;
+    digits[3] = minute() % 10;
 }
 
 
@@ -151,14 +151,7 @@ void Flash_Realtime(){
 
     }
       
-} 
-    
-
-
-
-
-
-
+}  
 
     /*
     OBJECTIVE: make the light flashand using current_postion swich spot. 
@@ -230,28 +223,24 @@ void Alarmtime_Inc(){
 
 void Time_change_Inc(){
 
-    int counter_second = second();
     int counter_minute = minute(); 
+    int counter_hour = hour();
 
     if(Realtime_Position == 0){
-        counter_minute = counter_minute + 10 ;
+        counter_hour = counter_hour + 10;
     }
     if(Realtime_Position == 1){
-        counter_minute++;
+        counter_hour++;
     }
     if(Realtime_Position == 2){
-        counter_second = counter_second + 10;
+        counter_minute = counter_minute + 10;
     }
     if(Realtime_Position == 3){
-        counter_second++;
+        counter_minute++;
     }
     
 
-    setTime(0,counter_minute,counter_second,0,0,0);
-
-    //  second() = counter_second;
-
-    //  minute() = counter_minute;
+    setTime(counter_hour,counter_minute,0,0,0,0);
 
 
 

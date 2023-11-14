@@ -7,7 +7,9 @@
 int currentState = 0;
 
 
-unsigned long currentMillis_latency = 0;
+unsigned long currentMillis_latency_1 = 0;
+//unsigned long currentMillis_latency_2 = 0;
+
 
 void setup() {
     Serial.begin(9600);
@@ -22,7 +24,7 @@ void loop() {
         Display_Realtime();
 
         if(left_Button_Release()){
-            currentMillis_latency = millis();          
+            currentMillis_latency_1 = millis();          
             currentState = 1;
             Button_Flag_1 = false; 
         }else if(right_Button_Release()){
@@ -41,14 +43,13 @@ void loop() {
         PARMETER: void
         NOTE: Use millis to solve the problem. 
         */
-        if (millis() - currentMillis_latency >= 3000) {    
+        if (millis() - currentMillis_latency_1 >= 3000) {    
             currentState = 0;
-            //currentPosition = 0;
             Realtime_Position = 0;
         }
         
         if(left_Button_Release()){
-            currentMillis_latency = millis();
+            currentMillis_latency_1 = millis();
             Realtime_counter = 1;
             Realtime_Position++;
             if(Realtime_Position > 3){
@@ -57,8 +58,8 @@ void loop() {
                 Realtime_counter = 0;
             }
             Button_Flag_1 = false;
-        }else if(right_Button_Release()){
-                currentMillis_latency = millis();
+        }else if(right_Button_Release()){     
+                currentMillis_latency_1 = millis();
                 Time_change_Inc();
                 Button_Flag_2 = false;
         }
@@ -66,13 +67,17 @@ void loop() {
         break;
 
 
-     case 2:
-       
+     case 2: 
          
         display_alarm_time();
 
+        if (millis() - currentMillis_latency_1 >= 3000) {    
+            currentState = 0;
+            currentPosition = 0;
+        }
+
         if(left_Button_Release()){
-            //currentMillis_latency = millis();
+            currentMillis_latency_1 = millis();
             Alarm_counter = 1;
             currentPosition++;
             if(currentPosition > 3){             
@@ -82,6 +87,7 @@ void loop() {
             }
             Button_Flag_1 = false;         
         }else if(right_Button_Release()){
+                currentMillis_latency_1 = millis();
                 Alarmtime_Inc();
                 Button_Flag_2 = false;
                 

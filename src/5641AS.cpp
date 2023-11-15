@@ -226,14 +226,22 @@ void Time_change_Inc(){
     int counter_minute = minute(); 
     int counter_hour = hour();
 
+       
+
     if(Realtime_Position == 0){
         counter_hour = counter_hour + 10;
-    }
+        if(counter_hour > 23 ){
+        counter_hour = 0;
+        } 
+    }  
     if(Realtime_Position == 1){
         counter_hour++;
     }
     if(Realtime_Position == 2){
         counter_minute = counter_minute + 10;
+        if(counter_minute > 59 ){
+            counter_minute = 0;
+        } 
     }
     if(Realtime_Position == 3){
         counter_minute++;

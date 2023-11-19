@@ -30,7 +30,7 @@ int digits[4] = {0,0,0,0};
 int Alarm_digits[4] = {0,0,0,0};
 
 int number [10][7] = {
-    //a  b  c  d  e  f  g
+   //a  b  c  d  e  f  g
     {1, 1, 1, 1, 1, 1, 0},//NUMBER 0
     {0, 1, 1, 0, 0, 0, 0},//NUMBER 1
     {1, 1, 0, 1, 1, 0, 1},//NUMBER 2
@@ -51,8 +51,10 @@ PARAMETER:
 NOTE: void
 */
 void DisplaySingle(int pos, int num){
+    //change the location
     digitalWrite(pos_control[pos], LOW);
 
+    //change the number
     for(int i = 0; i < 7; i++){
         digitalWrite(Segment[i],number[num][i]);
     }
@@ -82,7 +84,7 @@ OBJECTIVE: setup the LED using for loop
 PARMETER: void
 NOTE: we use "for"to set up the mode of the pin. First we made a array and a virable letter "i" because there are 7 letters that we have to set. So it should be smaller than 7.
 We don't have to do i++ yet that's the last step. Just like before pinMode start, put the name of the array in the bracket and ues i to call the name. write OUTPUT in there.
-Lastly just i++. The second one is the same as the  first. 
+Lastly just i++. The second one is the same as the first.  
 */
 void LED_Init(void) {
 
@@ -103,7 +105,7 @@ PARMETER: void
 NOTE: The minute(); and the second(); is for us to light up the number 1-9. Because we have to call them so we have to write a name for it like digits[0]
 */
 void Time_set(){
-    digits[0] = hour() / 10;//this number is calculated for the first LED position
+    digits[0] = hour() / 10;
     digits[1] = hour() % 10;
     digits[2] = minute() / 10;
     digits[3] = minute() % 10;
@@ -113,7 +115,7 @@ void Time_set(){
 /*
 OBJECTIVE: Display the real number by the clock form.
 PARMETER: void
-NOTE: void(for now)
+NOTE: void
 */
 void Display_Realtime(){
 
@@ -123,8 +125,7 @@ void Display_Realtime(){
         DisplaySingle(i,digits[i]);
         Led_clear();
         digitalWrite(pos_control[i],HIGH);
-    }
-    
+    } 
 }
 
 void Flash_Realtime(){
@@ -153,11 +154,11 @@ void Flash_Realtime(){
       
 }  
 
-    /*
-    OBJECTIVE: make the light flashand using current_postion swich spot. 
-    PARMETER: void
-    NOTE: void
-    */
+/*
+OBJECTIVE: make the light flashand using current_postion swich spot. 
+PARMETER: void
+NOTE: void
+*/
 void display_alarm_time(){
     
     unsigned long currentMillis_flash = millis();
@@ -188,11 +189,11 @@ void display_alarm_time(){
    
 }
 
-    /*
-    OBJECTIVE: add the number from the position the current_position is. 
-    PARMETER: void
-    NOTE: void
-    */
+/*
+OBJECTIVE: add the number from the position the current_position is. 
+PARMETER: void
+NOTE: void
+*/
 void Alarmtime_Inc(){
           
     Alarm_digits[currentPosition]++;

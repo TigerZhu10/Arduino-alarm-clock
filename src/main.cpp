@@ -24,7 +24,7 @@ void loop() {
      case 0:
         Display_Realtime();
 
-        Buzzer_on();
+        currentState = 3;
 
         if(left_Button_Release()){
             currentMillis_latency = millis();          
@@ -97,6 +97,36 @@ void loop() {
         } 
 
         break;
+
+     case 3:
+
+        Display_Realtime();
+
+        Buzzer_on();
+
+        currentState = 4;
+
+
+        break;
+
+     case 4:
+
+        // if (millis() - currentMillis_latency >= 3000) {    
+        //     currentState = 0;
+        //     Buzzer_off();
+        // }
+
+        if(left_Button_Release()){
+            currentState = 0;
+            Button_Flag_1 = false;
+        }
+
+        currentState = 3;
+
+
+        break;
+
+        
 
     default:
 

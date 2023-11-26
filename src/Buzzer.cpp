@@ -1,6 +1,11 @@
 #include "Buzzer.h"
 
-int Buzzer_pin = 14;//A0 pin
+#define Buzzer_pin 14//A0 pin
+
+bool Button_state = false;
+
+unsigned long currentButton_latency = 0;
+unsigned long pastButton_latency = 0;
 
 
 int past_Buzzer_Realtime = 0;
@@ -11,14 +16,19 @@ void Buzzer_Init(){
 }
 
 void Buzzer_on(){
-    unsigned long BuzzerMillis_Realtime = millis();
-
-    if(BuzzerMillis_Realtime - past_Buzzer_Realtime >= 1000){
-        digitalWrite(Buzzer_pin,HIGH);
-        past_Buzzer_Realtime = BuzzerMillis_Realtime;
+    currentButton_latency = millis();
+    if(currentButton_latency - pastButton_latency >= 1000){
+        Button_state = !Button_state;
+        Serial.println("some body care but some body don't");
+        pastButton_latency = currentButton_latency;
     }
-    
-   
+    digitalWrite(Buzzer_pin, Button_state);
+
+}
+
+void Buzzer_off(){
+    Button_state = false;
+    digitalWrite(Buzzer_pin, LOW);
 }
 
 

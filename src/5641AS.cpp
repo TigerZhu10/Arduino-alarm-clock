@@ -163,7 +163,7 @@ void display_alarm_time(){
     
     unsigned long currentMillis_flash = millis();
 
-    if (currentMillis_flash - past_Millis_flash >= 500) {
+    if(currentMillis_flash - past_Millis_flash >= 500) {
         Alarm_counter++;
         past_Millis_flash = currentMillis_flash;     
     } 

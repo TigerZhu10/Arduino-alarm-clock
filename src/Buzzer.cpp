@@ -1,4 +1,5 @@
 #include "Buzzer.h"
+#include "5641AS.h"
 
 #define Buzzer_pin 14//A0 pin
 
@@ -19,7 +20,6 @@ void Buzzer_on(){
     currentButton_latency = millis();
     if(currentButton_latency - pastButton_latency >= 1000){
         Button_state = !Button_state;
-        Serial.println("some body care but some body don't");
         pastButton_latency = currentButton_latency;
     }
     digitalWrite(Buzzer_pin, Button_state);
@@ -29,6 +29,27 @@ void Buzzer_on(){
 void Buzzer_off(){
     Button_state = false;
     digitalWrite(Buzzer_pin, LOW);
+}
+
+bool Alarm_triggerd(){
+    // for(int i = 0; i < 4;i++){
+    //     if(digits[i] == Alarm_digits[i]){
+    //         Serial.println("你好");
+    //         return true;
+    //     }   
+    // }
+    // return false;
+
+    if(digits[0] == Alarm_digits[0]){
+        if(digits[1] == Alarm_digits[1]){
+            if(digits[2] == Alarm_digits[2]){
+                if(digits[3] == Alarm_digits[3]){
+                    return true;
+                }
+            }
+        }   
+    }
+    return false;
 }
 
 

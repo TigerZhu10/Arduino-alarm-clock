@@ -27,7 +27,7 @@ int Segment [7] = {a,b,c,d,e,f,g};
 
 //Time_set();
 int digits[4] = {0,0,0,0};
-int Alarm_digits[4] = {0,0,0,0};
+int Alarm_digits[4] = {0,7,0,0};
 
 int number [10][7] = {
    //a  b  c  d  e  f  g

@@ -9,5 +9,6 @@ void Time_change_Inc(void);
 extern int currentPosition;
 extern unsigned int  Alarm_counter;
 extern int Alarm_digits[4];
+extern int digits[4];
 extern unsigned int Realtime_counter;
 extern int Realtime_Position;

@@ -24,7 +24,9 @@ void loop() {
      case 0:
         Display_Realtime();
 
-        currentState = 3;
+        if(Alarm_triggerd()){
+            currentState = 3;
+        }
 
         if(left_Button_Release()){
             currentMillis_latency = millis();          
@@ -119,6 +121,7 @@ void loop() {
         if(left_Button_Release()){
             currentState = 0;
             Button_Flag_1 = false;
+            
         }
 
         currentState = 3;

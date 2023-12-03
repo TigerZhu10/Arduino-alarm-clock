@@ -8,6 +8,9 @@ bool Button_state = false;
 unsigned long currentButton_latency = 0;
 unsigned long pastButton_latency = 0;
 
+int Buzzer_digits [4] = {0,0,0,0};
+
+
 
 int past_Buzzer_Realtime = 0;
 
@@ -37,6 +40,24 @@ bool Alarm_triggerd(){
         if(digits[1] == Alarm_digits[1]){
             if(digits[2] == Alarm_digits[2]){
                 if(digits[3] == Alarm_digits[3]){
+                    return true;
+                }
+            }
+        }   
+    }
+    return false;
+}
+
+bool Alarm_resume(){
+    for(int i = 0; i < 4; i++){
+        Buzzer_digits [i] = Alarm_digits [i];
+    }
+    Buzzer_digits[3]++;
+
+    if(digits[0] == Buzzer_digits[0]){
+        if(digits[1] == Buzzer_digits[1]){
+            if(digits[2] == Buzzer_digits[2]){
+                if(digits[3] == Buzzer_digits[3]){
                     return true;
                 }
             }

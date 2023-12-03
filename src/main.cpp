@@ -25,10 +25,12 @@ void loop() {
     switch (currentState){
      case 0:
         Display_Realtime();
-
         if(Alarm_triggerd() && buzzer_state == 0){
             currentState = 3;
         }
+        // if(Alarm_resume()){
+        //     buzzer_state = 0;
+        // }
 
         if(left_Button_Release()){
             currentMillis_latency = millis();          
@@ -103,6 +105,7 @@ void loop() {
         break;
 
      case 3:
+        buzzer_state = 1;
 
         Display_Realtime();
 
@@ -122,12 +125,13 @@ void loop() {
 
         if(left_Button_Release()){
             buzzer_state = 1;
-            currentState = 0;
+            Buzzer_off();
+            currentState = 0; 
             Button_Flag_1 = false;
 
+        }else{
+            currentState = 3;
         }
-
-        currentState = 3;
 
 
         break;

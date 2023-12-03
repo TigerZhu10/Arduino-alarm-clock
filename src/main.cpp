@@ -7,6 +7,8 @@
 
 int currentState = 0;
 
+int buzzer_state = 0;
+
 
 unsigned long currentMillis_latency = 0;
 
@@ -24,7 +26,7 @@ void loop() {
      case 0:
         Display_Realtime();
 
-        if(Alarm_triggerd()){
+        if(Alarm_triggerd() && buzzer_state == 0){
             currentState = 3;
         }
 
@@ -119,9 +121,10 @@ void loop() {
         // }
 
         if(left_Button_Release()){
+            buzzer_state = 1;
             currentState = 0;
             Button_Flag_1 = false;
-            
+
         }
 
         currentState = 3;

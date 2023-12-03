@@ -32,13 +32,6 @@ void Buzzer_off(){
 }
 
 bool Alarm_triggerd(){
-    // for(int i = 0; i < 4;i++){
-    //     if(digits[i] == Alarm_digits[i]){
-    //         Serial.println("你好");
-    //         return true;
-    //     }   
-    // }
-    // return false;
 
     if(digits[0] == Alarm_digits[0]){
         if(digits[1] == Alarm_digits[1]){

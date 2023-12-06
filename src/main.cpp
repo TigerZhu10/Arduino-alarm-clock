@@ -28,9 +28,12 @@ void loop() {
         if(Alarm_triggerd() && buzzer_state == 0){
             currentState = 3;
         }
-        // if(Alarm_resume()){
-        //     buzzer_state = 0;
-        // }
+        if(Alarm_resume()){
+            buzzer_state = 0;
+            if(buzzer_state == 0){
+                Serial.println("Tiger is smart");
+            }
+        }
 
         if(left_Button_Release()){
             currentMillis_latency = millis();          

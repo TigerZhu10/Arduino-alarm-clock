@@ -7,7 +7,7 @@
 
 int currentState = 0;
 
-int buzzer_state = 0;
+int buzzer_state = 1;
 
 
 unsigned long currentMillis_latency = 0;
@@ -25,14 +25,12 @@ void loop() {
     switch (currentState){
      case 0:
         Display_Realtime();
-        if(Alarm_triggerd() && buzzer_state == 0){
+        if(Alarm_triggerd() && buzzer_state == 1){
+            currentMillis_latency = millis();   
             currentState = 3;
         }
         if(Alarm_resume()){
-            buzzer_state = 0;
-            if(buzzer_state == 0){
-                Serial.println("Tiger is smart");
-            }
+            buzzer_state = 1;
         }
 
         if(left_Button_Release()){
@@ -108,7 +106,7 @@ void loop() {
         break;
 
      case 3:
-        buzzer_state = 1;
+        buzzer_state = 0;
 
         Display_Realtime();
 
@@ -121,13 +119,13 @@ void loop() {
 
      case 4:
 
-        // if (millis() - currentMillis_latency >= 3000) {    
-        //     currentState = 0;
-        //     Buzzer_off();
-        // }
+        if (millis() - currentMillis_latency >= 30000) {  
+            buzzer_state = 0;
+            Buzzer_off();
+        }
 
         if(left_Button_Release()){
-            buzzer_state = 1;
+            buzzer_state = 0;
             Buzzer_off();
             currentState = 0; 
             Button_Flag_1 = false;

@@ -30,7 +30,6 @@ void Buzzer_on(){
 }
 
 void Buzzer_off(){
-    Button_state = false;
     digitalWrite(Buzzer_pin, LOW);
 }
 

@@ -1,6 +1,5 @@
-# Arduino-alarm-clock
-This is a Ardiuno-alarm-clock!  #include <TimeLib.h>
+# Project Guide: Ardiuno-alarm-clock
 
-I am Tiger
-I am 13 years old
-Victoria
+# test 1
+## test 2
+### test 3

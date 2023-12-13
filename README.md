@@ -20,7 +20,22 @@
 - Hackster.io
 - Adafruit Learning System
 
-## Start Projects
+## Start Project:
+### If you want to make yourself an alarm clock by your own then you'll need:
+- Arduino Uno x 1
+- 5641as 4 x 7 Segment module x 1
+- push button x 1
+- active buzzer x 1
+- 220ohm resistor x 4
+- bread board x 1
+- jumper wires
+### If you don't have these hardware yet. You can buy it from online, the store I recommend are:
+- Arduino Store(https://store.arduino.cc/)
+- Amazon(https://www.amazon.com/)
+- SparkFun Electronics(https://www.sparkfun.com/)
+##Circuit diagram:
+
+
 
 
 
